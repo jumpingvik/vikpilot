@@ -86,6 +86,8 @@ class Controls:
     ignore = self.sensor_packets + ['testJoystick']
     if SIMULATION:
       ignore += ['driverCameraState', 'managerState']
+    ignore += ['driverCameraState', 'managerState']
+
     if self.d_camera_hardware_missing:
       ignore += ['driverMonitoringState']
     lateral_plan_svs = ['lateralPlanDEPRECATED', 'lateralPlanSPDEPRECATED']
