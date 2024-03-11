@@ -20,8 +20,8 @@ class CarControllerParams:
   ACCEL_MIN = -3.5  # m/s2
 
   STEER_STEP = 1
-  STEER_MAX = 1500
-  STEER_ERROR_MAX = 350     # max delta between torque cmd and torque motor
+  STEER_MAX = 1750
+  STEER_ERROR_MAX = 550     # max delta between torque cmd and torque motor
 
   # Lane Tracing Assist (LTA) control limits
   # Assuming a steering ratio of 13.7:
@@ -34,11 +34,11 @@ class CarControllerParams:
 
   def __init__(self, CP):
     if CP.lateralTuning.which == 'torque':
-      self.STEER_DELTA_UP = 15       # 1.0s time to peak torque
-      self.STEER_DELTA_DOWN = 25     # always lower than 45 otherwise the Rav4 faults (Prius seems ok with 50)
+      self.STEER_DELTA_UP = 18       # 1.0s time to peak torque
+      self.STEER_DELTA_DOWN = 28     # always lower than 45 otherwise the Rav4 faults (Prius seems ok with 50)
     else:
-      self.STEER_DELTA_UP = 10       # 1.5s time to peak torque
-      self.STEER_DELTA_DOWN = 25     # always lower than 45 otherwise the Rav4 faults (Prius seems ok with 50)
+      self.STEER_DELTA_UP = 15       # 1.5s time to peak torque
+      self.STEER_DELTA_DOWN = 30     # always lower than 45 otherwise the Rav4 faults (Prius seems ok with 50)
 
 
 class ToyotaFlags(IntFlag):
@@ -442,7 +442,7 @@ FW_QUERY_CONFIG = FwQueryConfig(
 )
 
 
-STEER_THRESHOLD = 100
+STEER_THRESHOLD = 250
 
 DBC = {
   CAR.RAV4H: dbc_dict('toyota_tnga_k_pt_generated', 'toyota_adas'),
